@@ -24,8 +24,9 @@ __Install Operating System with__
 * VirtualBox Guest Additions
 * system package
 
+```
     ./install.sh
     history -c && exit 0
-
+```
 
 
