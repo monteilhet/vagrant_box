@@ -12,6 +12,7 @@ apt-get install -y openssh-server
 # apt-get install -y puppet
 
 cp motd/02vagrant /etc/update-motd.d/
+chmod 755 /etc/update-motd.d/02vagrant
 
 echo "vagrant  ALL=(ALL) NOPASSWD: ALL" >  /etc/sudoers.d/vagrant
 
