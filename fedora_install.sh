@@ -41,17 +41,14 @@ cp ssh/authorized_keys /home/vagrant/.ssh
 chmod 600 /home/vagrant/.ssh/authorized_keys
 chown -R vagrant: /home/vagrant/.ssh
 
-printf "\nUseDNS no" >> /etc/ssh/sshd_config
+sed -i 's/#UseDNS no/UseDNS no/' /etc/ssh/sshd_config
 
-#sed -i 's/^mesg n$/tty -s \&\& mesg n/g' /root/.profile
+printf '\neval "$(dircolors /etc/DIR_COLORS)"' >> /root/.bashrc
+printf '\neval "$(dircolors /etc/DIR_COLORS)"' >> /home/vagrant/.bashrc
 
-#sed -i 's/# eval/eval/' ~/.bashrc
-#sed -i 's/# alias/alias/' ~/.bashrc
-#sed -i 's/#force_color/force_color/' /home/vagrant/.bashrc
-#sed -i 's/#alias/alias/' /home/vagrant/.bashrc
-
-#dd if=/dev/zero of=/EMPTY bs=1M
-#rm -f /EMPTY
+dd if=/dev/zero of=/EMPTY bs=1M
+rm -f /EMPTY
 
 echo
-echo "history -c && exit 0"
+echo "finish with :"
+echo "> .bash_history && history -c && shutdown now"

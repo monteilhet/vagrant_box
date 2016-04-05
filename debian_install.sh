@@ -45,4 +45,5 @@ dd if=/dev/zero of=/EMPTY bs=1M
 rm -f /EMPTY
 
 echo
-echo "history -c && exit 0"
+echo "finish with :"
+echo "> .bash_history && history -c && shutdown now"
