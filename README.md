@@ -1,4 +1,4 @@
-# materials for vagrant box
+# materials to make a vagrant box
 
 ## VM settings
 
