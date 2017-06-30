@@ -21,11 +21,11 @@ __Install Operating System with__
 
 ## Install
 
-* VirtualBox Guest Additions
+* VirtualBox Guest Additions (vb_guest script)
 * system package
 
 ```
-    ./install.sh
+    ./<distro>_install.sh
     history -c && exit 0
 ```
 
