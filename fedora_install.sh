@@ -6,19 +6,24 @@ if [ “$(id -u)” != “0” ]; then
   exit 1
 fi
 
+nm=${1:-nonm}
+
 yum update -y
 yum install -y sudo
 yum install -y openssh-server
 # yum install -y puppet
 
+if [[ "$nm" == "nonm" ]] ; then
+printf "\nDisable NetworkManager"
 systemctl stop firewalld
 systemctl disable firewalld
 systemctl stop NetworkManager
 systemctl disable NetworkManager
 sed -i s/^SELINUX=enforcing/SELINUX=permissive/ /etc/selinux/config
-
+rm -f /etc/resolv.conf # remove symbolic link
 systemctl enable network
 systemctl start network
+fi
 
 echo > /etc/motd
 cat motd/content >> /etc/motd
