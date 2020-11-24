@@ -18,6 +18,8 @@ __Install Operating System with__
     Root Password: vagrant
     Main account login: vagrant
     Main account password: vagrant
+    LVM partitioning :     Install using LVM with a single partition,
+    and at end deselect all packages
 
 ## Install
 
@@ -26,7 +28,19 @@ __Install Operating System with__
 
 ```
     ./<distro>_install.sh
-    history -c && exit 0
+    cd && > .bash_history && history -c && shutdown now
 ```
 
 
+## Optimisation
+
+Use bento clean and minmize script
+```
+cd /tmp
+git clone https://github.com/chef/bento
+cd bento/packer_templates
+su
+bash -v _common/minimize.sh
+bash -v debian/scripts/update.sh
+bash -v debian/scripts/cleanup.sh
+```
