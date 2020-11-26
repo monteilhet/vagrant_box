@@ -15,7 +15,7 @@ yum install -y sudo
 yum install -y openssh-server
 # yum install -y puppet
 
-if [[ "$nm" == "nofw" ]] ; then
+if [[ "$nf" == "nofw" ]] ; then
 printf "\nDisable Firewall"
 systemctl stop firewalld
 systemctl disable firewalld
