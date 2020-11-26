@@ -24,6 +24,12 @@ __Install Operating System with__
 ## Install
 
 * VirtualBox Guest Additions (vb_guest script)
+
+```
+   vb_guest/vbox_guest_install.sh  # x11 (to skip -nox11 option)
+```
+
+
 * system package
 
 ```
