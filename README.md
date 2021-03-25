@@ -46,7 +46,14 @@ cd /tmp
 git clone https://github.com/chef/bento
 cd bento/packer_templates
 su
-bash -v _common/minimize.sh
 bash -v debian/scripts/update.sh
 bash -v debian/scripts/cleanup.sh
+bash -v _common/minimize.sh
+```
+
+## vagrant box
+
+```bash
+vagrant package --base  debian_image --output 2021-03-debian-10.8.box
+
 ```
