@@ -33,10 +33,15 @@ __Install Operating System with__
 * system package
 
 ```
-    ./<distro>_install.sh
-    cd && > .bash_history && history -c && shutdown now
+  ./<distro>_install.sh
+  cd && > .bash_history && history -c && shutdown now
 ```
 
+* localisation
+
+timedatectl (utc 0)
+localectl (keymap & locale)
+locale en_US.UTF-8
 
 ## Optimisation
 
@@ -46,8 +51,14 @@ cd /tmp
 git clone https://github.com/chef/bento
 cd bento/packer_templates
 su
+# for debian
 bash -v debian/scripts/update.sh
 bash -v debian/scripts/cleanup.sh
+bash -v _common/minimize.sh
+
+# for centos
+bash -v centos/scipts/update.sh
+bash -v centos/scripts/cleanup.sh
 bash -v _common/minimize.sh
 ```
 

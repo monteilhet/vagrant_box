@@ -29,6 +29,7 @@ systemctl disable firewalld
 systemctl stop NetworkManager
 systemctl disable NetworkManager
 rm -f /etc/resolv.conf # remove symbolic link
+yum install network-scripts
 systemctl enable network
 systemctl start network
 fi
