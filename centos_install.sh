@@ -60,6 +60,13 @@ sed -i 's/#UseDNS no/UseDNS no/' /etc/ssh/sshd_config
 printf '\neval "$(dircolors /etc/DIR_COLORS)"' >> /root/.bashrc
 printf '\neval "$(dircolors /etc/DIR_COLORS)"' >> /home/vagrant/.bashrc
 
+if [[ $(sudo swapon --show | wc -l) == 0 ]] ; then
+dd if=/dev/zero of=/swapfile bs=1MiB count=$((2014))
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+bash -c 'echo "/swapfile none swap defaults 0 0" >> /etc/fstab'
+fi
 dd if=/dev/zero of=/EMPTY bs=1M
 rm -f /EMPTY
 

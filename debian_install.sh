@@ -41,6 +41,14 @@ sed -i 's/# alias/alias/' ~/.bashrc
 sed -i 's/#force_color/force_color/' /home/vagrant/.bashrc
 sed -i 's/#alias/alias/' /home/vagrant/.bashrc
 
+if [[ $(swapon --show | wc -l) == 0 ]] ; then
+dd if=/dev/zero of=/swapfile bs=1MiB count=$((2014))
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+bash -c 'echo "/swapfile none swap defaults 0 0" >> /etc/fstab'
+fi
+
 dd if=/dev/zero of=/EMPTY bs=1M
 rm -f /EMPTY
 

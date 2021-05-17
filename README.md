@@ -11,17 +11,38 @@ __Create a virtual machine using__
    Vagrant uses this initial NAT device for setting up port forwards necessary for SSH.
 
 
+__Create a LVM partitioning with gpt parttion table__
+
+ * use gparted iso to boot VM before installation
+ * create a gpt partition table
+ * create a LVM partition (and optionally a boot partition)
+ * create VG debian / LV root 
+ * use a swapfile rather than a swap partition
+
 __Install Operating System with__
 
-    Hostname: vagrant-[os-name], e.g. vagrant-debian-wheezy or [os-name]-vagrantbox
+    Hostname: vagrant-[os-name], e.g.debian-box or [os-name]-vagrantbox
     Domain: vagrantup.com / vagrant.net
     Root Password: vagrant
     Main account login: vagrant
     Main account password: vagrant
     LVM partitioning :     Install using LVM with a single partition,
     and at end deselect all packages
+    Centos: active network interface
 
 ## Install
+
+```
+ssh vagrant@localhost -p 2299
+cd /tmp
+# debian/ubuntu
+apt install -y sudo git
+# centos/fedora
+# yum install -y git
+git clone https://github.com/monteilhet/vagrant_box.git
+cd vagrant_box
+```
+
 
 * VirtualBox Guest Additions (vb_guest script)
 
