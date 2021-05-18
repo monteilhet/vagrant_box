@@ -28,7 +28,7 @@ __Install Operating System with__
     Main account password: vagrant
     LVM partitioning :     Install using LVM with a single partition,
     and at end deselect all packages
-    Centos: active network interface
+    Centos: check network interface is active !
 
 ## Install
 
@@ -47,6 +47,7 @@ cd vagrant_box
 * VirtualBox Guest Additions (vb_guest script)
 
 ```
+   # => insert vbox_guest_add iso before
    vb_guest/vbox_guest_install.sh  # x11 (to skip -nox11 option)
 ```
 
@@ -60,7 +61,7 @@ cd vagrant_box
 
 * localisation
 
-timedatectl (utc 0)
+timedatectl (utc 0: sudo timedatectl set-timezone UTC)
 localectl (keymap & locale)
 locale en_US.UTF-8
 
@@ -78,7 +79,7 @@ bash -v debian/scripts/cleanup.sh
 bash -v _common/minimize.sh
 
 # for centos
-bash -v centos/scipts/update.sh
+bash -v centos/scripts/update.sh
 bash -v centos/scripts/cleanup.sh
 bash -v _common/minimize.sh
 ```
@@ -87,5 +88,6 @@ bash -v _common/minimize.sh
 
 ```bash
 vagrant package --base  debian_image --output 2021-03-debian-10.8.box
+vagrant package --base  centos_image --output 2021-03-centos-8.3.box
 
 ```

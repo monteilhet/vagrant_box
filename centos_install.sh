@@ -37,7 +37,7 @@ fi
 echo > /etc/motd
 cat motd/content >> /etc/motd
 echo >> /etc/motd
-echo "  "Host: `hostname` / Login: vagrant >> /etc/motd
+echo "  "Box: `hostname` / Login: vagrant >> /etc/motd
 echo "  "`cat /etc/centos-release` >> /etc/motd
 echo "  "Released: $(date +%Y-%m-%d) >> /etc/motd
 echo >> /etc/motd
@@ -60,7 +60,7 @@ sed -i 's/#UseDNS no/UseDNS no/' /etc/ssh/sshd_config
 printf '\neval "$(dircolors /etc/DIR_COLORS)"' >> /root/.bashrc
 printf '\neval "$(dircolors /etc/DIR_COLORS)"' >> /home/vagrant/.bashrc
 
-if [[ $(sudo swapon --show | wc -l) == 0 ]] ; then
+if [[ $(swapon --show | wc -l) == 0 ]] ; then
 dd if=/dev/zero of=/swapfile bs=1MiB count=$((2014))
 chmod 600 /swapfile
 mkswap /swapfile
