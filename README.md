@@ -8,7 +8,8 @@ __Create a virtual machine using__
 * RAM 256/512 Mo
 * Disable audio, usb, etc. controllers unless they’re needed.
 * Vagrant absolutely requires that the first network device must be a NAT device (use virtio-net).
-   Vagrant uses this initial NAT device for setting up port forwards necessary for SSH.
+
+> Vagrant uses this initial NAT device for setting up port forwards necessary for SSH.
 
 
 __Create a LVM partitioning with gpt parttion table__
@@ -16,19 +17,19 @@ __Create a LVM partitioning with gpt parttion table__
  * use gparted iso to boot VM before installation
  * create a gpt partition table
  * create a LVM partition (and optionally a boot partition)
- * create VG debian / LV root 
+ * create VG debian / LV root
  * use a swapfile rather than a swap partition
 
 __Install Operating System with__
 
     Hostname: vagrant-[os-name], e.g.debian-box or [os-name]-vagrantbox
-    Domain: vagrantup.com / vagrant.net
+    Domain: vagrantup.com / vagrant.net / local
     Root Password: vagrant
     Main account login: vagrant
     Main account password: vagrant
-    LVM partitioning :     Install using LVM with a single partition,
+    LVM partitioning :  Install using LVM with a single partition,
     and at end deselect all packages
-    Centos: check network interface is active !
+    Centos/rockylinux: check network interface is active !
 
 ## Install
 
@@ -61,9 +62,12 @@ cd vagrant_box
 
 * localisation
 
-timedatectl (utc 0: sudo timedatectl set-timezone UTC)
+```
+timedatectl 
+# to set UTC timezone : sudo timedatectl set-timezone UTC
 localectl (keymap & locale)
 locale en_US.UTF-8
+```
 
 ## Optimisation
 
@@ -78,7 +82,7 @@ bash -v debian/scripts/update.sh
 bash -v debian/scripts/cleanup.sh
 bash -v _common/minimize.sh
 
-# for centos
+# for centos/rockylinux
 bash -v centos/scripts/update.sh
 bash -v centos/scripts/cleanup.sh
 bash -v _common/minimize.sh
@@ -87,7 +91,8 @@ bash -v _common/minimize.sh
 ## vagrant box
 
 ```bash
-vagrant package --base  debian_image --output 2021-03-debian-10.8.box
-vagrant package --base  centos_image --output 2021-03-centos-8.3.box
+vagrant package --base  debian_img --output 2021-03-debian-10.8.box
+vagrant package --base  centos_img --output 2021-03-centos-8.3.box
+vagrant package --base  rockylinux_img --output 2021-10-rockylinux-8.4.box
 
 ```

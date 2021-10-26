@@ -28,7 +28,7 @@ fi
 echo > /etc/motd
 cat motd/content >> /etc/motd
 echo >> /etc/motd
-echo "  "Host: `hostname` / Login: vagrant >> /etc/motd
+echo "  "Host: `hostname -s` / Login: vagrant >> /etc/motd
 echo "  "`cat /etc/fedora-release` >> /etc/motd
 echo "  "Released: $(date +%Y-%m-%d) >> /etc/motd
 echo >> /etc/motd

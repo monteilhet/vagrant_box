@@ -14,7 +14,7 @@ apt-get install -y openssh-server
 echo >> /etc/motd
 cat motd/content >> /etc/motd
 echo >> /etc/motd
-echo "  "Box: `hostname` / Login: vagrant >> /etc/motd
+echo "  "Box: `hostname -s` / Login: vagrant >> /etc/motd
 echo "  "`lsb_release -d` >> /etc/motd
 echo "  "Released: $(date +%Y-%m-%d) >> /etc/motd
 echo >> /etc/motd
