@@ -16,14 +16,14 @@ __Create a LVM partitioning with gpt parttion table__
 
  * use gparted iso to boot VM before installation
  * create a gpt partition table
- * create a LVM partition (and optionally a boot partition)
+ * create a LVM partition (and a boot partition 1G)
  * create VG debian / LV root
- * use a swapfile rather than a swap partition
+ * use a swapfile rather than a swap partition (NB ubuntu server create a swapfile by default)
 
 __Install Operating System with__
 
-    Hostname: vagrant-[os-name], e.g.debian-box or [os-name]-vagrantbox
-    Domain: vagrantup.com / vagrant.net / local
+    Hostname: [os-name]-box   (alt vagrant-[os-name], [os-name]-vagrantbox)
+    Domain: local  (alt vagrantup.com / vagrant.net)
     Root Password: vagrant
     Main account login: vagrant
     Main account password: vagrant

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+printf "\n"
+printf "  _/      _/    _/_/      _/_/_/  _/_/_/      _/_/    _/      _/  _/_/_/_/_/\n"
+printf " _/      _/  _/    _/  _/        _/    _/  _/    _/  _/_/    _/      _/\n"
+printf "_/      _/  _/_/_/_/  _/  _/_/  _/_/_/    _/_/_/_/  _/  _/  _/      _/\n"
+printf " _/  _/    _/    _/  _/    _/  _/    _/  _/    _/  _/    _/_/      _/\n"
+printf "  _/      _/    _/    _/_/_/  _/    _/  _/    _/  _/      _/      _/\n"
+printf "\n"
+printf "    _/_/_/      _/_/    _/      _/\n"
+printf "   _/    _/  _/    _/    _/  _/\n"
+printf "  _/_/_/    _/    _/      _/\n"
+printf " _/    _/  _/    _/    _/  _/\n"
+printf "_/_/_/      _/_/    _/      _/\n"
+printf "\n"
+
+echo "  "Host: `hostname` / Login: vagrant
+echo "  "`lsb_release -d`
+echo "  "Released: $(date +%Y-%m-%d)
+echo
+
