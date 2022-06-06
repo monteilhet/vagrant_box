@@ -12,6 +12,6 @@ IN
 
 echo "  "Host: `hostname` / Login: vagrant
 echo "  "`lsb_release -d`
-echo "  "Released: $(date +%Y-%m-%d)
+echo "  "Released: yy-mm-dd
 echo
 

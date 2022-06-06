@@ -14,6 +14,9 @@ apt-get install -y openssh-server
 cp motd/02vagrant /etc/update-motd.d/
 chmod 755 /etc/update-motd.d/02vagrant
 
+CurrentDate=$(date +%Y-%m-%d)
+sed -i s/yy-mm-dd/$CurrentDate/ /etc/update-motd.d/02vagrant
+
 echo "vagrant  ALL=(ALL) NOPASSWD: ALL" >  /etc/sudoers.d/vagrant
 
 #mkdir -p ~/.ssh
@@ -33,6 +36,8 @@ sed -i 's/^mesg n$/tty -s \&\& mesg n/g' /root/.profile
 
 sed -i 's/#force_color/force_color/' ~/.bashrc
 sed -i 's/#force_color/force_color/' /home/vagrant/.bashrc
+
+sudo timedatectl set-timezone UTC
 
 dd if=/dev/zero of=/EMPTY bs=1M
 rm -f /EMPTY

@@ -67,6 +67,10 @@ mkswap /swapfile
 swapon /swapfile
 bash -c 'echo "/swapfile none swap defaults 0 0" >> /etc/fstab'
 fi
+
+
+sudo timedatectl set-timezone UTC
+
 dd if=/dev/zero of=/EMPTY bs=1M
 rm -f /EMPTY
 

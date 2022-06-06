@@ -63,7 +63,7 @@ cd vagrant_box
 * localisation
 
 ```
-timedatectl 
+timedatectl
 # to set UTC timezone : sudo timedatectl set-timezone UTC
 localectl (keymap & locale)
 locale en_US.UTF-8
