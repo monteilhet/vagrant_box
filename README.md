@@ -88,7 +88,72 @@ bash -v centos/scripts/cleanup.sh
 bash -v _common/minimize.sh
 ```
 
-## vagrant box
+## upgrade OS
+
+### centos/rocky linux
+
+```bash
+sudo -i
+dnf upgrade
+```
+
+### debian
+
+```bash
+sudo -i
+apt update
+apt upgrade
+
+```
+
+### kernel upgrade
+
+If OS upgrade includes a new kernel => version clean older kernel
+
+```
+# centos/rockylinux
+uname -a
+rpm -qa *kernel*
+yum remove kernel-modules-old_kernel_ver_x86_64 kernel-core-old_kernel_ver_x86_64 kernel-old_kernel_ver_x86_64 
+
+# debian
+dpkg -l *image*
+apt purge <old kernel>
+
+```
+
+### update guest adds after kernel upgrade
+
+```bash
+
+# using vbox guest adds script currently installed : /opt/VBoxGuestAdditions-6.1.x
+    apt-get install -y linux-headers-$(uname -r)
+./init/vboxadd setup
+```
+
+#### centos/rocky linux clean grub entries
+
+```bash
+grubby --info ALL
+
+# remove unwanted entry
+grubby --remove-kernel=/boot/vmlinuz-0-rescue-c546e1415ae941d7a2d39ab3fd6860b7
+
+# regenerate grub config
+grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
+## upgrade virtual box guest additions
+
+```bash
+# => insert vbox_guest_add iso before
+   git clone https://github.com/vagrant_box
+   vagrant_box/vb_guest/vbox_guest_install.sh
+# check virtual box guest additions
+   vagrant_box/vb_guest/check_vbox_guestadd.sh 
+```
+
+## package vagrant box
 
 ```bash
 vagrant package --base  debian_img --output 2021-03-debian-10.8.box
