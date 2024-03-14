@@ -1,10 +1,9 @@
 #!/bin/bash
 
-ls /opt/VBoxGuest
+ls /opt/VBoxGuest*
 
 # test if vbox guest additions are installed
-lsmod | grep vboxguest
-lsmod | grep vboxsf
+lsmod | grep -E "vbox(sf|guest)"
 
 systemctl status vboxadd-service
 
